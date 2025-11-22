@@ -1,0 +1,64 @@
+{JAVASCRIPT}
+<div id="ipsLayout_mainArea">
+    <!-- BEGIN switch_on_index -->
+    <nav class="ipsBreadcrumb ipsBreadcrumb_top ipsFaded_withHover">
+      <ul class="ipsList_inline ipsPos_right">
+        <li>
+          <a data-action="defaultStream" class="ipsType_light " href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Unread Content</span></a>
+        </li>
+        <li>
+          <!-- BEGIN switch_user_logged_in -->
+          <a data-action="markSiteRead" class="ipsType_light" data-controller="core.front.core.markRead" href="{U_MARK_READ}" title="Mark all content on the site as read" data-ipstooltip=""><i class="fa fa-check" aria-hidden="true"></i> Mark site read</a>
+          <!-- END switch_user_logged_in -->
+        </li>
+      </ul>
+      
+      <ul data-role="breadcrumbList">
+        <li>
+          <a title="Home" href="{U_INDEX}">
+            <span>Home</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- END switch_on_index -->
+  
+    <div class="ipsPageHeader ipsClearfix ipsMargin_bottom cForumHeader ipsHeaderButtons ipsFlex ipsFlex-ai:center ipsFlex-jc:between">
+      <h1 class="ipsType_pageTitle ipsFlex-flex:11 ipsType_break">
+        Forums
+      </h1>
+      
+      <!-- BEGIN switch_user_logged_in -->
+      <ul class="ipsToolList ipsToolList_horizontal ipsClearfix sm:ipsPos_none sm:ipsMargin:none ipsFlex-flex:00">
+        <li class="ipsToolList_primaryAction ipsResponsive_hidePhone">
+          <a class="ipsButton ipsButton_medium ipsButton_important" href="#" data-ipsdialog="" data-ipsdialog-size="narrow" data-ipsdialog-title="Select Forum">Start new topic</a>
+        </li>
+      </ul>
+      <!-- END switch_user_logged_in -->
+    </div>
+  
+    {BOARD_INDEX}
+  
+    <!-- BEGIN switch_on_index -->
+    <nav class="ipsBreadcrumb ipsBreadcrumb_top ipsFaded_withHover">
+      <ul class="ipsList_inline ipsPos_right">
+        <li>
+          <a data-action="defaultStream" class="ipsType_light " href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Unread Content</span></a>
+        </li>
+        <li>
+          <!-- BEGIN switch_user_logged_in -->
+          <a data-action="markSiteRead" class="ipsType_light" data-controller="core.front.core.markRead" href="{U_MARK_READ}" title="Mark all content on the site as read" data-ipstooltip=""><i class="fa fa-check" aria-hidden="true"></i> Mark site read</a>
+          <!-- END switch_user_logged_in -->
+        </li>
+      </ul>
+      
+      <ul data-role="breadcrumbList">
+        <li>
+          <a title="Home" href="{U_INDEX}">
+            <span>Home</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- END switch_on_index -->
+</div>
