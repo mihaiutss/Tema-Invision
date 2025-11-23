@@ -1,0 +1,145 @@
+<!-- BEGIN googlemap -->
+
+<div>
+<br />
+<iframe frameborder="0" scrolling="no" width="100%" height="450" src="{googlemap.U_GOOGLEMAP}"></iframe><br />
+<br />
+</div>
+
+<!-- END googlemap -->
+<nav class="ipsBreadcrumb ipsBreadcrumb_top ipsFaded_withHover">
+  <ul class="ipsList_inline ipsPos_right">
+    <li>
+      <a data-action="defaultStream" class="ipsType_light " href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Unread Content</span></a>
+    </li>
+    <li>
+      <a data-action="markSiteRead" class="ipsType_light" data-controller="core.front.core.markRead" href="#" title="Mark all content on the site as read" data-ipstooltip=""><i class="fa fa-check" aria-hidden="true"></i> Mark site read</a>
+    </li>
+  </ul>
+
+  <ul data-role="breadcrumbList">
+    <li>
+      <a title="Home" href="/">
+        <span>Home <i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
+    <li>
+      <a href="/viewonline">
+        <span>Online User List </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="ipsPageHeader sm:ipsPadding:half ipsClearfix ipsMargin_bottom sm:ipsMargin_bottom:half">
+	<h1 class="ipsType_pageTitle">Online Users</h1>
+</div>
+<br />
+<div class="ipsBox">
+  <h2 class="ipsType_sectionTitle ipsType_reset ipsType_medium">{TOTAL_REGISTERED_USERS_ONLINE}, {TOTAL_GUEST_USERS_ONLINE}</h2>
+  <div data-resort="listResort">
+      <div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+        <ul class="ipsButtonRow ipsPos_right ipsClearfix">
+          <li>
+            <a href="#elFilterByMenu_30c4c2a87208d3046313b6f39cc1d950_menu" data-role="tableFilterMenu" id="elFilterByMenu_30c4c2a87208d3046313b6f39cc1d950" data-ipsmenu="" data-ipsmenu-activeclass="ipsButtonRow_active" data-ipsmenu-selectable="radio" class="">Filter By <i class="fa fa-caret-down"></i></a>
+            
+          </li>
+        </ul>
+        <div data-role="tablePagination" class="ipsHide"></div>
+      </div>
+      <ol class="ipsList_reset ipsPad ipsGrid ipsGrid_collapsePhone ipsClear" data-ipsgrid="" data-role="tableRows">
+        <!-- BEGIN reg_user_row -->
+        <li class="ipsPhotoPanel ipsPhotoPanel_small ipsClearfix cOnlineUser ipsGrid_span4">
+          <a href="{reg_user_row.U_USER_PROFILE}" rel="nofollow" data-ipshover="" data-ipshover-width="370" data-ipshover-target="{reg_user_row.U_USER_PROFILE}&amp;do=hovercard" class="ipsUserPhoto ipsUserPhoto_mini" title="Go to {reg_user_row.USERNAME}'s profile" id="">
+            <img src="#" alt="Admin" loading="lazy" />
+          </a>
+          <div class="ipsContained">
+            <h3 class="ipsType_reset ipsType_normal">
+              <a href="{reg_user_row.U_USER_PROFILE}" rel="nofollow" data-ipshover="" data-ipshover-width="370" data-ipshover-target="{reg_user_row.U_USER_PROFILE}/&amp;do=hovercard&amp;referrer=" title="Go to Admin's profile" class="ipsType_break" id="">
+                {reg_user_row.USERNAME}</a>
+            </h3>
+            <p class="ipsType_reset ipsTruncate ipsTruncate_line ipsType_break"><a href="{reg_user_row.U_FORUM_LOCATION}">{reg_user_row.FORUM_LOCATION}</a></p>
+            <p class="ipsType_reset ipsTruncate ipsTruncate_line ipsType_light">{reg_user_row.LASTUPDATE}</p>
+          </div>
+        </li>
+        <!-- END reg_user_row -->
+        
+        <!-- BEGIN guest_user_row -->
+        <li class="ipsPhotoPanel ipsPhotoPanel_small ipsClearfix cOnlineUser ipsGrid_span4">
+          
+        </li>        
+        <!-- END guest_user_row -->
+        
+        <!-- BEGIN bot_user_row -->
+        <li class="ipsPhotoPanel ipsPhotoPanel_small ipsClearfix cOnlineUser ipsGrid_span4">
+          
+        </li>        
+        <!-- END bot_user_row -->
+        
+      </ol>
+      <div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear ipsHide" data-role="tablePagination"></div>
+  </div>
+</div>
+
+<nav class="ipsBreadcrumb ipsBreadcrumb_top ipsFaded_withHover">
+  <ul class="ipsList_inline ipsPos_right">
+    <li>
+      <a data-action="defaultStream" class="ipsType_light " href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Unread Content</span></a>
+    </li>
+    <li>
+      <a data-action="markSiteRead" class="ipsType_light" data-controller="core.front.core.markRead" href="#" title="Mark all content on the site as read" data-ipstooltip=""><i class="fa fa-check" aria-hidden="true"></i> Mark site read</a>
+    </li>
+  </ul>
+
+  <ul data-role="breadcrumbList">
+    <li>
+      <a title="Home" href="/">
+        <span>Home <i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
+    <li>
+      <a href="/viewonline">
+        <span>Online User List </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="borderwrap" style="display: none">
+<div class="maintitle"><h3>{TOTAL_REGISTERED_USERS_ONLINE}</h3><span class="title-options">{TOTAL_GUEST_USERS_ONLINE}</span></div>
+	<table class="ipbtable view-online" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th class="name">{L_USERNAME}</th>
+				<th class="active">{L_LAST_UPDATE}</th>
+				<th class="info">{L_FORUM_LOCATION}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- BEGIN reg_user_row -->
+			<tr>
+				<td class="{reg_user_row.ROW_CLASS}"><a href="{reg_user_row.U_USER_PROFILE}">{reg_user_row.USERNAME}</a></td>
+				<td class="{reg_user_row.ROW_CLASS}">{reg_user_row.LASTUPDATE}</td>
+				<td class="{reg_user_row.ROW_CLASS}"><a href="{reg_user_row.U_FORUM_LOCATION}">{reg_user_row.FORUM_LOCATION}</a></td>
+			</tr>
+			<!-- END reg_user_row -->
+			<!-- BEGIN bot_user_row -->
+			<tr>
+				<td class="{bot_user_row.ROW_CLASS}">{bot_user_row.USERNAME}</td>
+				<td class="{bot_user_row.ROW_CLASS}">{bot_user_row.LASTUPDATE}</td>
+				<td class="{bot_user_row.ROW_CLASS}"><a href="{bot_user_row.U_FORUM_LOCATION}">{bot_user_row.FORUM_LOCATION}</a></td>
+			</tr>
+			<!-- END bot_user_row -->
+			<!-- BEGIN guest_user_row -->
+			<tr>
+				<td class="{guest_user_row.ROW_CLASS}">{guest_user_row.USERNAME}</td>
+				<td class="{guest_user_row.ROW_CLASS}">{guest_user_row.LASTUPDATE}</td>
+				<td class="{guest_user_row.ROW_CLASS}"><a href="{guest_user_row.U_FORUM_LOCATION}">{guest_user_row.FORUM_LOCATION}</a></td>
+			</tr>
+			<!-- END guest_user_row -->
+		</tbody>
+	</table>
+	<div class="box-content">
+		<p class="online-explain">{L_ONLINE_EXPLAIN}</p>
+	</div>
+</div>
