@@ -467,7 +467,7 @@ html[dir="ltr"] .ipsNavBar_primary > ul > li, html[dir="ltr"] .ipsNavBar_seconda
 
 .ipsNavBar_secondary > li > a {
     color: var(--theme-main_nav_tab_font);
-    font-size: 13.0px;
+    font-size: 15.0px;
     padding: 0px 18px;
     line-height: var(--secondary-navigation--height);
     float: left;
@@ -1535,7 +1535,7 @@ a#elCreateNew i {
 
 .ipsNavBar_secondary > li > a {
     color: #353c416b;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     padding: 0px 18px;
     line-height: var(--secondary-navigation--height);
@@ -1633,10 +1633,6 @@ ul.ipsMenu, .ipsMenu > ul {
     max-width: 100vw;
 }
 
-.ipsApp [class*="ipsGap"] > * {
-    margin: var(--ipsGap_row, var(--ipsGap)) 0 0 var(--ipsGap, 0px);
-}
-
 .ipsFlex-flex\:00 {
     flex-grow: 0;
     flex-shrink: 0;
@@ -1719,4 +1715,131 @@ ul#elUserLink_menu:before {
     border-bottom-color: #ffffff;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.ipsGap\:4 {
+    --ipsGap: var(--sp-4);
+}
+
+.ipsGap_row\:0 {
+    --ipsGap_row: var(--sp-0);
+}
+
+.ipsAchievementsProgress {
+    height: 8px;
+    background: #ddddddb3;
+    width: auto;
+    border-radius: 5px;
+}
+
+.ipsApp [class*="ipsGap"] {
+    list-style: none;
+    padding: .1px 0;
+    margin: calc(var(--sp-4), var(--sp-0)) * -1) 0 0 calc(var(--sp-4, 0px) * -1);
+}
+
+.elUserNav_achievements__icon.ipsFlex-flex\:00 {
+    margin: 15px 20px 0px 0;
+}
+
+.elUserNav_achievements__content.ipsFlex-flex\:11 {
+    flex: 1 auto;
+    line-height: 1.3em;
+}
+
+.ipsMenu_headerBar {
+    border-bottom: 1px solid rgb(53, 60, 65, 0.15);
+    border-radius: var(--popup--radius) var(--popup--radius) 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ipsMenu_headerBar, .ipsMenu_footerBar {
+    padding: var(--sp-4) var(--sp-5);
+    line-height: 24px;
+}
+
+.ipsMenu_innerContent {
+    max-height: 350px;
+    overflow: auto;
+}
+
+.ipsType_center {
+    text-align: center;
+}
+
+.ipsMenu_footerBar {
+    border-top: 1px solid var(--theme-text_color);
+    border-radius: 0px 0px var(--popup--radius) var(--popup--radius);
+}
+
+.ipsMenu_headerBar, .ipsMenu_footerBar {
+    padding: var(--sp-4) var(--sp-5);
+    line-height: 24px;
+}
+
+.ipsApp .ipsButton_verySmall {
+    font-size: 13.0px;
+    line-height: 2.33;
+    padding: 0 15px;
+}
+
+.ipsApp .ipsButton_link {
+    background: transparent;
+    color: var(--theme-link_button);
+    border-color: transparent;
+    padding: 9px 20px;
+    font-weight: normal;
+}
+
+.ipsApp .ipsButton {
+    font-size: 14.0px;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 20px;
+    border-radius: var(--button--radius);
+    border: 1px solid transparent;
+    transition: 0.1s all 
+linear;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ipsMenu_headerBar .ipsType_sectionHead {
+    order: -1;
+}
+
+.ipsType_sectionHead {
+    font-size: 18.0px;
+    color: var(--theme-text_dark);
+    line-height: 24.0px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0;
+}
+
+div#elFullNotifications_menu {
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.1), 0px 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(45, 55, 72, 0.1);
+    left: 57%;
+    top: 60px;
+    width: 450px !important;
+}
+
+div#elFullNotifications_menu .ipsMenu_headerBar {
+    padding: 5px 20px;
 }
