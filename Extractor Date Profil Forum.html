@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractor Date Profil Forum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .error {
+            background: #fee;
+            border-left: 4px solid #f44;
+            padding: 15px;
+            border-radius: 8px;
+            color: #c00;
+            margin-bottom: 20px;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+        }
+
+        .profile-info h2 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .data-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .data-item label {
+            display: block;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .data-item value {
+            display: block;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .rank-html {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .awards-section {
+            margin-top: 20px;
+        }
+
+        .awards-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>???? Extractor Date Profil Forum</h1>
+            <p>Parsează și extrage date din JSON-ul profilului de forum</p>
+        </div>
+
+        <div class="card">
+            <div class="input-section">
+                <label for="jsonInput"><strong>Introdu JSON-ul:</strong></label>
+                <textarea id="jsonInput" placeholder='Paste JSON aici: [{"id":1,"name":"..."}]'></textarea>
+                <div class="button-group">
+                    <button class="btn-primary" onclick="extractData()">Extrage Date</button>
+                    <button class="btn-secondary" onclick="clearData()">Șterge</button>
+                </div>
+            </div>
+
+            <div id="error" class="error" style="display: none;"></div>
+
+            <div id="results" class="results"></div>
+        </div>
+    </div>
+
+    <script>
+        function stripHTML(html) {
+            if (!html) return '';
+            const tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+        }
+
+        function extractFieldValue(html, fieldId) {
+            try {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const field = doc.querySelector(`#${fieldId} .field_uneditable`);
+                if (!field) return '-';
+                
+                // Extrage textul sau alt attribute pentru imagini
+                const img = field.querySelector('img');
+                if (img) {
+                    return img.alt || img.title || '-';
+                }
+                
+                return field.textContent.trim() || '-';
+            } catch (e) {
+                return '-';
+            }
+        }
+        
+        function extractTextFromHTML(html) {
+            if (!html) return '-';
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Caută imagini și extrage alt/title
+            const img = doc.querySelector('img');
+            if (img) {
+                return img.alt || img.title || '-';
+            }
+            
+            // Altfel extrage doar textul
+            return doc.body.textContent.trim() || '-';
+        }
+
+        function extractImageUrl(html, attr = 'src') {
+            if (!html) return null;
+            const match = html.match(new RegExp(`${attr}="([^"]+)"`));
+            return match ? match[1] : null;
+        }
+
+        function extractData() {
+            let input = document.getElementById('jsonInput').value.trim();
+            const errorDiv = document.getElementById('error');
+            const resultsDiv = document.getElementById('results');
+
+            errorDiv.style.display = 'none';
+            resultsDiv.classList.remove('show');
+
+            if (!input) {
+                showError('Te rog introdu JSON-ul!');
+                return;
+            }
+
+            try {
+                // Elimină backticks dacă există
+                if (input.startsWith('`') && input.endsWith('`')) {
+                    input = input.slice(1, -1);
+                }
+                
+                // Încearcă mai multe metode de parsare
+                let data;
+                
+                // Metodă 1: Parsare directă
+                try {
+                    data = JSON.parse(input);
+                } catch (e1) {
+                    // Metodă 2: Înlocuiește escaped quotes și încearcă din nou
+                    try {
+                        const cleaned = input.replace(/\\"/g, '"').replace(/\\n/g, '\n');
+                        data = JSON.parse(cleaned);
+                    } catch (e2) {
+                        // Metodă 3: Este un string JSON escapeat complet
+                        try {
+                            // Wrap în quotes și parsează de două ori
+                            const wrapped = '"' + input.replace(/"/g, '\\"') + '"';
+                            const unescaped = JSON.parse(wrapped);
+                            data = JSON.parse(unescaped);
+                        } catch (e3) {
+                            // Metodă 4: Evaluare JavaScript (ultimă soluție)
+                            try {
+                                data = eval('(' + input + ')');
+                            } catch (e4) {
+                                throw e1; // Aruncă eroarea originală
+                            }
+                        }
+                    }
+                }
+                
+                const user = Array.isArray(data) ? data[0] : data;
+
+                // Extrage datele
+                const extracted = {
+                    id: user.id,
+                    name: stripHTML(user.name),
+                    nameHTML: user.name,
+                    avatar: extractImageUrl(user.avatar),
+                    status: stripHTML(user.status),
+                    rank: extractTextFromHTML(user.rank),
+                    rankHTML: user.rank,
+                    lastVisit: stripHTML(user.last_visit),
+                    
+                    // Din câmpul "other"
+                    istoric: extractFieldValue(user.other, 'field_id1'),
+                    sex: extractFieldValue(user.other, 'field_id-7'),
+                    dataNasterii: extractFieldValue(user.other, 'field_id-12'),
+                    mesaje: extractFieldValue(user.other, 'field_id-6'),
+                    localizare: extractFieldValue(user.other, 'field_id-11'),
+                    dataInscriere: extractFieldValue(user.other, 'field_id-4'),
+                    joburi: extractFieldValue(user.other, 'field_id-9'),
+                    comentarii: extractFieldValue(user.other, 'field_id-20'),
+                    multumiri: extractFieldValue(user.other, 'field_id-14'),
+                    pachete: extractFieldValue(user.other, 'field_id2'),
+                    respectareReguli: extractFieldValue(user.other, 'field_id3'),
+                    puncte: extractFieldValue(user.other, 'field_id-13'),
+                    
+                    awards: user.awards,
+                    comments: user.comments
+                };
+
+                displayResults(extracted);
+
+            } catch (e) {
+                showError('JSON invalid! Verifică formatul: ' + e.message);
+            }
+        }
+
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            
+            const html = `
+                <div class="profile-header">
+                    ${data.avatar ? `<img src="${data.avatar}" alt="Avatar" class="avatar" onerror="this.style.display='none'">` : ''}
+                    <div class="profile-info">
+                        <h2>${data.name}</h2>
+                        <div class="status">${data.status}</div>
+                        <div style="margin-top: 10px; opacity: 0.9;">Ultima vizită: ${data.lastVisit}</div>
+                    </div>
+                </div>
+
+                <div class="data-grid">
+                    <div class="data-item">
+                        <label>ID Utilizator</label>
+                        <value>${data.id}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Data Înscrierii</label>
+                        <value>${data.dataInscriere}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Mesaje</label>
+                        <value>${data.mesaje}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Puncte</label>
+                        <value>${data.puncte}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Mulțumiri</label>
+                        <value>${data.multumiri}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Rang</label>
+                        <value>${data.rank}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Sex</label>
+                        <value>${data.sex}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Localizare</label>
+                        <value>${data.localizare}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Data Nașterii</label>
+                        <value>${data.dataNasterii}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Pachete</label>
+                        <value>${data.pachete}</value>
+                    </div>
+                    
+                    <div class="data-item">
+                        <label>Respectarea Regulilor</label>
+                        <value>${data.respectareReguli}</value>
+                    </div>
+                </div>
+
+                ${data.istoric !== '-' ? `
+                <div class="data-item" style="margin-top: 20px;">
+                    <label>Istoric</label>
+                    <value>${data.istoric}</value>
+                </div>
+                ` : ''}
+
+                ${data.comentarii !== '-' ? `
+                <div class="data-item" style="margin-top: 20px;">
+                    <label>Comentarii</label>
+                    <value>${data.comentarii}</value>
+                </div>
+                ` : ''}
+
+                <div class="data-item" style="margin-top: 20px;">
+                    <label>Rang (HTML)</label>
+                    <div class="rank-html">${data.rankHTML}</div>
+                </div>
+
+                ${data.awards ? `
+                <div class="awards-section">
+                    <h3>???? Recompense</h3>
+                    <div class="rank-html">${data.awards}</div>
+                </div>
+                ` : ''}
+
+                <div style="margin-top: 30px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
+                    <strong>Date complete (JSON):</strong>
+                    <pre style="margin-top: 10px; padding: 15px; background: white; border-radius: 5px; overflow-x: auto; font-size: 12px;">${JSON.stringify(data, null, 2)}</pre>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = html;
+            resultsDiv.classList.add('show');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = '⚠️ ' + message;
+            errorDiv.style.display = 'block';
+        }
+
+        function clearData() {
+            document.getElementById('jsonInput').value = '';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('results').classList.remove('show');
+        }
+
+        // Auto-load dacă există date în textarea
+        window.addEventListener('load', () => {
+            const sampleData = document.getElementById('jsonInput').value;
+            if (sampleData.trim()) {
+                extractData();
+            }
+        });
+    </script>
+</body>
+</html>
