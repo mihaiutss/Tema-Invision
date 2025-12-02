@@ -4,14 +4,14 @@
 	<!-- BEGIN tablehead -->
                   <li data-categoryid="{catrow.tablehead.ID}" class="cForumRow ipsBox ipsSpacer_bottom ipsResponsive_pull">
                     <h2 class="ipsType_sectionTitle ipsType_reset cForumTitle">
-                            <a href="#" class="ipsPos_right ipsJS_show ipsType_noUnderline cForumToggle" onclick="toggleCategory('{catrow.tablehead.ID}');" data-action="toggleCategory" data-ipstooltip="" title="Toggle this category"></a>
-                            <a href="{catrow.tablehead.ID}">{catrow.tablehead.L_FORUM}</a>
+                      	<a href="{catrow.tablehead.ID}">{catrow.tablehead.L_FORUM}</a>
+                        <a href="#" class="ipsPos_right ipsJS_show ipsType_noUnderline cForumToggle" onclick="app.toggleCategory('{catrow.tablehead.ID}'); return false;" data-action="toggleCategory" data-ipstooltip="" title="Toggle this category"></a>
                     </h2>
                     
                     <ol class="ipsDataList ipsDataList_large ipsDataList_zebra" data-role="forums">
                 <!-- END tablehead -->
                 <!-- BEGIN forumrow -->
-		<li class="cForumRow ipsDataItem ipsDataItem_responsivePhoto  ipsClearfix" data-forumid="{catrow.forumrow.FORUM_ID}">
+		<li class="cForumRow ipsDataItem ipsDataItem_responsivePhoto ipsClearfix" data-forumid="{catrow.forumrow.FORUM_ID}">
                   <div class="ipsDataItem_icon ipsDataItem_category">
                     <span class="ipsItemStatus ipsItemStatus_large cForumIcon_normal ipsItemStatus_read">
                       <i class="fa fa-comments"></i>
@@ -51,26 +51,6 @@
 			{catrow.forumrow.USER_LAST_POST}
                     </li>
                  </ul>
-                <script type="text/javascript">
-                    //<![CDATA[
-                  	if(Number({catrow.forumrow.POSTS}) === 0) {
-                  		const currentScriptElement = document.currentScript;
-                  		const forumRow = currentScriptElement.closest('.cForumRow');
-                  
-                  		if (forumRow) {
-                                    const statsElement = forumRow.querySelector('.ipsDataItem_stats');
-                                    if (statsElement) {
-                                         statsElement.innerHTML = '';
-                                    }
-                  
-                                    const lastPosterElement = forumRow.querySelector('.ipsDataItem_lastPoster');
-                                    if (lastPosterElement) {
-                                        lastPosterElement.innerHTML = '<ul class="ipsDataItem_lastPoster ipsDataItem_withPhoto"><li class="ipsType_light ipsResponsive_showDesktop">No posts here yet</li></ul>';
-                                    }
-                  		}
-                  	}
-                    //]]>
-                </script>
           </li>
     <!-- END forumrow -->
     <!-- BEGIN tablefoot -->
@@ -79,69 +59,6 @@
     <!-- END tablefoot -->
     <!-- END catrow -->
     </ol>
-<script type="text/javascript">
-    //<![CDATA[
-        document.querySelectorAll('.ipsDataItem_lastPoster > li.ipsType_light.ipsType_blendLinks').forEach(function(oldLi) {
-            const oldAnchor = oldLi.querySelector('a.gensmall');
-            if (!oldAnchor) return;
-            
-            const fullText = oldLi.textContent.trim();
-            let dateString = '';
-  
-            for (let node of oldLi.childNodes) {
-  		if (node.nodeType === 3 && node.textContent.trim().length > 0) {
-  			dateString = node.textContent.trim();
-  			break;
-  		}
-            }
-  
-   	    if (dateString.length === 0) {
-              dateString = fullText.split('\n')[0].trim();
-            }
-  
-            const userName = oldAnchor.textContent.trim();
-            const userUrl = oldAnchor.href;
-            const lastPostAnchor = oldLi.querySelector('a.last-post-icon');
-            const lastPostUrl = lastPostAnchor ? lastPostAnchor.href : '#';
-        
-            const dateFormatted = new Date(dateString.replace(' - ', ' ')).toLocaleString('en-US', {
-                month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
-            });
-  
-            console.log(dateString);
-            console.log(dateFormatted);
-        
-            const baseUrl = 'https://fgsuport.forumgratuit.ro';
-            const profileId = userUrl.match(/\/u(\d+)/) ? userUrl.match(/\/u(\d+)/)[1] : '1';
-            
-            const profileUrl = ''+ baseUrl +'/u' + profileId;
-        
-            const newHtml = 'By <a href="'+ profileUrl +'" rel="nofollow" data-ipshover="" data-ipshover-width="370" data-ipshover-target="'+ profileUrl +'&amp;do=hovercard&amp;referrer=" title="Go to '+ userName +'\'s profile" class="ipsType_break"> '+ userName +' </a>'+
-  		', <a href="'+ lastPostUrl +'" title="Go to last post"><time datetime="'+ new Date().toISOString() +'" title="'+ dateFormatted +'" data-short="'+ dateFormatted +'">'+ dateFormatted +'</time></a>';
-            
-            oldLi.innerHTML = newHtml;
-            oldLi.style.cssText = '';
-        });
-  
-        function toggleCategory(categoryId) {
-            const categoryContainer = document.querySelector(`li[data-categoryid="${categoryId}"]`);
-            
-            if (categoryContainer) {
-                const forumList = categoryContainer.querySelector('ol[data-role="forums"]');
-                
-                if (forumList) {
-                    forumList.classList.toggle('hidden');
-                    
-                    const toggleButton = categoryContainer.querySelector('.cForumToggle');
-                    if (toggleButton) {
-                        toggleButton.classList.toggle('toggled');
-                    }
-                }
-            }
-        }
-    //]]>
-  
-</script>
 </section>
 
 <!-- BEGIN switch_forum_images -->
