@@ -1,64 +1,143 @@
 {JAVASCRIPT}
-<div id="ipsLayout_mainArea">
-    <!-- BEGIN switch_on_index -->
-    <nav class="ipsBreadcrumb ipsBreadcrumb_top ipsFaded_withHover">
-      <ul class="ipsList_inline ipsPos_right">
-        <li>
-          <a data-action="defaultStream" class="ipsType_light " href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Unread Content</span></a>
-        </li>
-        <li>
-          <!-- BEGIN switch_user_logged_in -->
-          <a data-action="markSiteRead" class="ipsType_light" data-controller="core.front.core.markRead" href="{U_MARK_READ}" title="Mark all content on the site as read" data-ipstooltip=""><i class="fa fa-check" aria-hidden="true"></i> Mark site read</a>
-          <!-- END switch_user_logged_in -->
-        </li>
-      </ul>
-      
-      <ul data-role="breadcrumbList">
-        <li>
-          <a title="Home" href="{U_INDEX}">
-            <span>Home</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- END switch_on_index -->
+<!-- BEGIN switch_on_index -->
+<nav class="ipsBreadcrumb ipsBreadcrumb_top ipsFaded_withHover">
+  <ul data-role="breadcrumbList">
+    <li>
+      <a title="Home" href="{U_INDEX}">
+        <span>Home</span>
+      </a>
+    </li>
+    {NAV_CAT_DESC}
+  </ul>
   
-    <div class="ipsPageHeader ipsClearfix ipsMargin_bottom cForumHeader ipsHeaderButtons ipsFlex ipsFlex-ai:center ipsFlex-jc:between">
-      <h1 class="ipsType_pageTitle ipsFlex-flex:11 ipsType_break">
-        Forums
-      </h1>
-      
-      <!-- BEGIN switch_user_logged_in -->
-      <ul class="ipsToolList ipsToolList_horizontal ipsClearfix sm:ipsPos_none sm:ipsMargin:none ipsFlex-flex:00">
-        <li class="ipsToolList_primaryAction ipsResponsive_hidePhone">
-          <a class="ipsButton ipsButton_medium ipsButton_important" href="#" data-ipsdialog="" data-ipsdialog-size="narrow" data-ipsdialog-title="Select Forum">Start new topic</a>
-        </li>
-      </ul>
-      <!-- END switch_user_logged_in -->
-    </div>
-  
-    {BOARD_INDEX}
-  
-    <!-- BEGIN switch_on_index -->
-    <nav class="ipsBreadcrumb ipsBreadcrumb_top ipsFaded_withHover">
-      <ul class="ipsList_inline ipsPos_right">
-        <li>
-          <a data-action="defaultStream" class="ipsType_light " href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Unread Content</span></a>
-        </li>
-        <li>
-          <!-- BEGIN switch_user_logged_in -->
-          <a data-action="markSiteRead" class="ipsType_light" data-controller="core.front.core.markRead" href="{U_MARK_READ}" title="Mark all content on the site as read" data-ipstooltip=""><i class="fa fa-check" aria-hidden="true"></i> Mark site read</a>
-          <!-- END switch_user_logged_in -->
-        </li>
-      </ul>
-      
-      <ul data-role="breadcrumbList">
-        <li>
-          <a title="Home" href="{U_INDEX}">
-            <span>Home</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- END switch_on_index -->
+  <ul class="ipsList_inline ipsPos_right">
+    <!-- BEGIN switch_user_logged_in -->
+    <li>
+      <a data-action="defaultStream" class="ipsType_light" href="{U_TODAY_ACTIVE}"><i class="fa fa-newspaper" aria-hidden="true"></i> <span>Unread Content</span></a>
+    </li>
+    <li>
+      <a data-action="markSiteRead" class="ipsType_light" href="{U_MARK_READ}" title="Mark all content on the site as read" data-ipstooltip=""><i class="fa fa-check" aria-hidden="true"></i> Mark site read</a>
+    </li>
+    <!-- END switch_user_logged_in -->
+    
+    <li>
+      <a data-action="defaultStream" class="ipsType_light<!-- BEGIN switch_user_logged_in --> cUserConnected<!-- END switch_user_logged_in -->" href="{U_TODAY_ACTIVE}"><i class="fa fa-newspaper" aria-hidden="true"></i> <span>All Activity</span></a>
+    </li>
+  </ul>
+</nav>
+<!-- END switch_on_index -->
+
+<!-- BEGIN switch_user_logged_in -->
+<div class="ipsPageHeader ipsClearfix ipsMargin_bottom cForumHeader ipsHeaderButtons ipsFlex ipsFlex-ai:center ipsFlex-jc:between">
+  <h1 class="ipsType_pageTitle ipsFlex-flex:11 ipsType_break">
+    Forums
+  </h1>
+  <ul class="ipsToolList ipsToolList_horizontal ipsClearfix sm:ipsPos_none sm:ipsMargin:none ipsFlex-flex:00">
+    <li class="ipsToolList_primaryAction ipsResponsive_hidePhone">
+      <a class="faButton faButton_medium faButton_important" href="#" data-ipsdialog="" data-ipsdialog-size="narrow" data-ipsdialog-title="Select Forum">Start new topic</a>
+    </li>
+  </ul>
 </div>
+<!-- END switch_user_logged_in -->
+
+<!-- BEGIN message_admin_index -->
+	<div class="newslink">
+	<p class="date">{LAST_VISIT_DATE}</p>
+	<!-- BEGIN message_admin_titre -->
+		<div class="h3">{message_admin_index.message_admin_titre.MES_TITRE}</div>
+	<!-- END message_admin_titre -->
+
+	<!-- BEGIN message_admin_txt -->
+		<p>{message_admin_index.message_admin_txt.MES_TXT}</p>
+	<!-- END message_admin_txt -->
+	</div>
+<!-- END message_admin_index -->
+
+{CHATBOX_TOP}
+{BOARD_INDEX}
+
+<div class="cWidgetContainer " data-role="widgetReceiver" data-orientation="horizontal" data-widgetarea="footer">
+  <ul class="ipsList_reset">
+    <li data-blockid="app_core_stats" data-blocktitle="Member Statistics" class="ipsWidget ipsBox ipsWidget_horizontal" animating="false" style="">
+      <h3 class="ipsType_reset faWidget_title">Member Statistics</h3>
+      <div class="ipsWidget_inner">
+        <div class="faFlex al:center jc:between sm:column sm:stretch ipsPadding faWidget_stats">
+          <div class="faFlex-flex:11 faFlex al:center jc:around">
+            
+            <div class="ipsType_center">
+              <span class="ipsType_large ipsWidget_statsCount" data-stats-users>1</span><br />
+              <span class="ipsType_light ipsType_medium">Total Members</span>
+            </div>
+            
+            <div class="ipsType_center">
+              <span class="ipsType_large ipsWidget_statsCount" data-ipstooltip="" _title="11/30/2025 11:27" data-stats-online>2</span><br />
+              <span class="ipsType_light ipsType_medium">Most Online</span>
+            </div>
+          </div>
+          <div class="faFlex-flex:01 faBorder_left faPadding_left faMargin_right:double">
+            <div class="ipsPhotoPanel ipsPhotoPanel_mini cNewestMember">
+              <a href="#" rel="nofollow" data-fahover="" data-fahover-width="370" data-fahover-target="#" class="ipsUserPhoto ipsUserPhoto_mini" title="Go to Admin's profile" id="ips_uid_6552_10">
+                <img src="https://2img.net/i/fa/invision/pp-blank-thumb.png" alt="Admin" loading="lazy" />
+              </a>
+              
+              <div>
+                <span class="ipsType_minorHeading">Newest Member</span><br>
+                <span class="ipsType_normal">
+                  <a href="#" rel="nofollow" data-fahover="" data-fahover-width="370" data-fahover-target="#" title="Go to Admin's profile" class="ipsType_break" id="ips_uid_6552_11">Admin</a>
+                </span>
+                <br />
+                <span class="ipsType_small ipsType_light">Joined <time datetime="2025-11-22T08:26:14Z" title="11/22/2025 09:26" data-short="Nov 22">November 22</time></span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <!-- BEGIN disable_viewonline -->
+    <li class="faWidget faWidget_horizontal ipsBox">
+      <div>
+        <h3 class="ipsType_reset faWidget_title">
+          <span class="faFlex:data-between-wrap-center">
+            <span>
+              Who's Online&nbsp;&nbsp;
+              <span class="ipsType_light ipsType_unbold ipsType_medium">
+                <span data-membercount="0">{TOTAL_USERS_ONLINE}</span>
+              </span>
+            </span>
+            <span class="ipsType_medium ipsType_light ipsType_unbold ipsType_blendLinks">
+              <!-- BEGIN switch_viewonline_link -->
+              <a href="{U_VIEWONLINE}">(See full list)</a>
+              <!-- END switch_viewonline_link -->
+            </span>
+          </span>
+        </h3>
+        <div class="ipsWidget_inner ipsPadding">
+          <ul class="ipsList_inline ipsList_csv ipsList_noSpacing ipsType_normal">
+            <li class="ipsType_reset ipsType_medium ipsType_light" data-noneonline="">
+              {LOGGED_IN_USER_LIST}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <!-- END disable_viewonline -->
+  </ul>
+</div>
+ 
+
+<script type="text/javascript">
+//<![CDATA[
+  window.FA_Theme.vars('stats_widget', {
+    show_stats_widget: true,
+    show_whois_widget: true,
+    stats: {
+      total_users: '{TOTAL_USERS}',
+      most_users:  '{RECORD_USERS}',
+      latest_user: '{NEWEST_USER}',
+    },
+  });
+//]]>
+</script>
+
+{CHATBOX_BOTTOM}
+{AUTO_DST}
