@@ -65,30 +65,16 @@
           <div class="faFlex-flex:11 faFlex al:center jc:around">
             
             <div class="ipsType_center">
-              <span class="ipsType_large ipsWidget_statsCount" data-stats-users>1</span><br />
+              <span class="ipsType_large ipsWidget_statsCount" data-stats-users></span><br />
               <span class="ipsType_light ipsType_medium">Total Members</span>
             </div>
             
             <div class="ipsType_center">
-              <span class="ipsType_large ipsWidget_statsCount" data-ipstooltip="" _title="11/30/2025 11:27" data-stats-online>2</span><br />
+              <span class="ipsType_large ipsWidget_statsCount" title="" data-stats-online></span><br />
               <span class="ipsType_light ipsType_medium">Most Online</span>
             </div>
           </div>
-          <div class="faFlex-flex:01 faBorder_left faPadding_left faMargin_right:double">
-            <div class="ipsPhotoPanel ipsPhotoPanel_mini cNewestMember">
-              <a href="#" rel="nofollow" data-fahover="" data-fahover-width="370" data-fahover-target="#" class="ipsUserPhoto ipsUserPhoto_mini" title="Go to Admin's profile" id="ips_uid_6552_10">
-                <img src="https://2img.net/i/fa/invision/pp-blank-thumb.png" alt="Admin" loading="lazy" />
-              </a>
-              
-              <div>
-                <span class="ipsType_minorHeading">Newest Member</span><br>
-                <span class="ipsType_normal">
-                  <a href="#" rel="nofollow" data-fahover="" data-fahover-width="370" data-fahover-target="#" title="Go to Admin's profile" class="ipsType_break" id="ips_uid_6552_11">Admin</a>
-                </span>
-                <br />
-                <span class="ipsType_small ipsType_light">Joined <time datetime="2025-11-22T08:26:14Z" title="11/22/2025 09:26" data-short="Nov 22">November 22</time></span>
-                </div>
-            </div>
+          <div class="faFlex-flex:01 faBorder_left faPadding_left faMargin_right:double" data-stats-lastuser>
           </div>
         </div>
       </div>
@@ -130,10 +116,13 @@
   window.FA_Theme.vars('stats_widget', {
     show_stats_widget: true,
     show_whois_widget: true,
+  
     stats: {
       total_users: '{TOTAL_USERS}',
       most_users:  '{RECORD_USERS}',
       latest_user: '{NEWEST_USER}',
+      total_online: '{TOTAL_USERS_ONLINE}',
+      online_users: '{LOGGED_IN_USER_LIST}'
     },
   });
 //]]>
