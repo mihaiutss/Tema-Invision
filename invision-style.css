@@ -1,3 +1,128 @@
+/*   ZĂPADĂ PE HEADER */
+#faNavigation {
+    background: #C60800;
+    background-blend-mode: hard-light;
+    background-image: url(https://i.servimg.com/u/f58/20/17/62/59/craciu10.gif);
+    background-repeat: repeat-x!important;
+    /* background-size: contain!important; */
+    /* min-height: 200px; */
+}
+a#footer_brand div img {
+    display: none;
+}
+span.borderwrap-event {
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png);
+    padding: 26px 40px;
+    background-position: -211px -310px !important;
+}
+ .col-span-forum-1 {
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) -22px -17px;
+    width: 200px;
+    height: 25px;
+}
+.col-span-forum-3.image_winter0, .col-span-forum-3.image_winter4 {
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) 2.1% -87px;
+    width: 100px;
+    height: 52px;
+    position: absolute;
+    top: 0px;
+    margin-top: -23px;
+    right: -2px;
+}
+
+.col-span-forum-3.image_winter1 {
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) -15.8% -87px;
+    width: 100px;
+    height: 52px;
+    position: absolute;
+    top: 0px;
+    margin-top: -23px;
+    right: -2px;
+}
+
+.col-span-forum-3.image_winter2 {
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) -35.8% -87px;
+    width: 100px;
+    height: 52px;
+    position: absolute;
+    top: 0px;
+    margin-top: -23px;
+    right: -2px;
+}
+
+.col-span-forum-3.image_winter3 {
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) -61.4% -87px;
+    width: 100px;
+    height: 52px;
+    position: absolute;
+    top: 0px;
+    margin-top: -23px;
+    right: -2px;
+}
+
+.col-span-forum-3.image_winter-section {
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) -87% -87px;
+    width: 100px;
+    height: 52px;
+    position: absolute;
+    top: 0px;
+    margin-top: -23px;
+    right: -2px;
+}
+.forum-event {
+    width: 100%;
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) 0 -59px;
+    margin-top: -13px;
+    position: relative;
+    top: 23px;
+}
+.borderwrap {
+    background: #369FCF url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png) 0 -150px;
+}
+.borderwrap:before {
+    content: "";
+    background: url(https://i.servimg.com/u/f21/11/80/17/98/hohoho11.png);
+    padding: 23px 19px;
+    position: absolute;
+    right: -14px;
+    top: 10px;
+    /*z-index: 8;*/
+    background-position: -220px 0;
+}
+.borderwrap {
+  position: relative;
+  overflow: visible;
+}
+.xmas-hat-profile img {
+ width: 100px;
+ margin-left: -50px;
+ margin-top: -12px;
+ z-index: 9;
+ float: left;
+ position: absolute;
+}
+.xmas-hat-lastTopics img {
+ width: 30px;
+ margin-left: -9px;
+ margin-top: -2px;
+ z-index: 9;
+ float: left;
+ position: relative;
+}
+.xmas-hat-lastTopics {
+ float: left;
+ margin-right: -26px;
+ position: relative;
+ top: -1px;
+}
+.xmas-hat-Conexion img {
+ width: 100px;
+ margin-left: -35px;
+ margin-top: -15px;
+ z-index: 9;
+ float: left;
+ position: absolute;
+}
 :root {
     --color-primary: #2980b9;
     --color-accent: #4a77e8; /* Adăugat pentru consistență link-uri dropdown */
@@ -124,6 +249,11 @@ li.sub-nav-tab.active > a {
   font-size: 13px;
 }
 
+h2.ipsType_sectionTitle.ipsType_reset.cForumTitle > a {
+    font-size: 18px;
+    font-weight: 500;
+}
+
 /* -------------------------------------------
 // 2. STILURI PENTRU DROPDOWN (Generic)
 // ------------------------------------------- */
@@ -170,17 +300,19 @@ div#notificationsDropdownContent, div#messagesDropdownContent {
 
 .dropdown-header,
 .dropdown-footer {
-    padding: 16px 20px;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 16px 20px;
     line-height: 24px;
 }
 
 .dropdown-footer {
     border-bottom: 1px solid rgba(53, 60, 65, 0.15);
     border-radius: 0 0 4px 4px;
+    padding: 16px 20px;
+    line-height: 24px;
 }
 
 .dropdown-header {
@@ -192,14 +324,21 @@ div#notificationsDropdownContent, div#messagesDropdownContent {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 18px;
+}
+
+span.dropdown-title {
+    font-size: 18.0px;
+    color: #000000;
+    line-height: 24.0px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0;
 }
 
 .dropdown-footer {
     border-top: 1px solid #e0e0e085;
     background-color: #fff;
     justify-content: center;
-    padding: 10px 18px;
 }
 
 /* Link-uri interne Header/Footer */
@@ -508,7 +647,7 @@ span.fa-user-name {
 /* Containerul Principal Albastru */
 #faNavigation {
     width: 100%;
-    background: var(--theme-main_nav);
+    /* background: var(--theme-main_nav); */
     position: relative;
 }
 
@@ -680,8 +819,8 @@ li.nav-tab.active .faNavBar_active__identifier {
 
 /* Stilul wrapper-ului pentru avatar */
 .pm-item .pm-avatar-wrapper {
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
     flex-shrink: 0;
 }
 
@@ -829,7 +968,7 @@ ul.sub-nav-tabs > li:nth-child(1) {
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    overflow: hidden; /* Asigură că antetul rotunjit funcționează */
+    /* overflow: hidden; /* Asigură că antetul rotunjit funcționează */
     box-shadow: 0 2px 4px -1px #33333340;
     border-radius: 4px;
 }
@@ -862,23 +1001,26 @@ ul.sub-nav-tabs > li:nth-child(1) {
 
 /* Butonul de Toggle (Ascunde/Afișează) */
 .cForumToggle {
-    font-size: 0.9em;
-    padding: 5px;
-    color: #888;
+    font-size: 20px;
+    color: #888 !important;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform .3s !important;
+    opacity: 0.2;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
 }
 
 .cForumToggle:before {
-    content: '\f077'; /* Iconița FontAwesome 'chevron-up' sau similar */
+    content: '\f078';
     font-family: 'FontAwesome';
     display: block;
+    font-size: 18px;
     line-height: 1;
 }
 
-/* Stil pentru când categoria este restrânsă (poate necesita JS pentru a adăuga o clasă) */
 .cForumRow.collapsed .cForumToggle:before {
-    content: '\f078'; /* Iconița FontAwesome 'chevron-down' */
+    content: '\f078';
 }
 
 /* Lista de Forumuri din cadrul Categoriei */
@@ -1497,7 +1639,7 @@ li.ipsNavBar[data-role="navBarItem"] a {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--theme-main_nav_tab);
+    /* background: var(--theme-main_nav_tab); */
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
 }
 
@@ -1706,7 +1848,7 @@ a.faRight.dropdown-link {
     white-space: nowrap;
     display: inline-block;
     vertical-align: middle;
-    padding: 5px 15px;
+    padding: 0 15px;
     border-radius: 4px;
     border: 1px solid transparent;
     transition: 0.1s all linear;
@@ -2218,6 +2360,7 @@ a[data-fahover] {
     padding-left: 20px;
     margin-right: 40px;
     border-left: 1px solid #dddd;
+    min-width: 15%;
 }
 
 .faFlex-flex\:01 {
@@ -2285,4 +2428,100 @@ span.ipsType_large {
 span.ipsType_normal {
     line-height: 1;
     font-size: 14px;
+}
+
+.faDataItem_main > a {
+    font-size: 13px;
+}
+
+a.notfication-from > img {
+    border-radius: 24px;
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.pm-info {
+    font-size: 13px;
+    max-width: 75%;
+}
+
+a#faUserInbox, a#faNotifications, a.fa-user-link {
+  position: relative;
+}
+
+a.ipsPos_right.ipsJS_show.ipsType_noUnderline.cForumToggle {
+    font-weight: 800;
+    font-size: 20px;
+}
+
+div#chatbox_top {
+    display: none;
+}
+
+div[style="resize"] {
+    display: none;
+}
+
+li.pm-item-empty {
+    padding: 15px 10px;
+    text-align: center;
+}
+
+h2.ipsType_sectionTitle.ipsType_reset.ipsType_medium {
+    font-size: 13.0px;
+    line-height: 1;
+    font-weight: bold;
+    padding: 16px 20px;
+    margin: 0;
+    background: #fff;
+    color: #1a202c;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom: 1px solid #71809626;
+}
+
+.ipsButtonBar.ipsPad_half.ipsClearfix.ipsClear {
+    line-height: 1;
+    background: #fff;
+    border-bottom: 1px solid #353c4126;
+    padding: 14px;
+}
+
+ol.ipsList_reset.ipsPad.ipsGrid.ipsGrid_collapsePhone.ipsClear {
+    padding: 20px;
+}
+
+li.ipsPhotoPanel.ipsPhotoPanel_small.ipsClearfix.cOnlineUser.ipsGrid_span4 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: space-around;
+    line-height: 24px;
+}
+
+.ipsContained {
+    flex: 1 1;
+    flex-grow: 1;
+}
+
+a.ipsUserPhoto.ipsUserPhoto_mini {
+    margin-right: 15px;
+}
+
+ul.ipsButtonRow.ipsPos_right.ipsClearfix > li {
+    float: right;
+}
+
+a#elFilterByMenu_30c4c2a87208d3046313b6f39cc1d950 {
+    float: right;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 4px;
 }
