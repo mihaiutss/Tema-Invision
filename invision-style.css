@@ -8,6 +8,13 @@
     /* background-size: contain!important; */
     /* min-height: 200px; */
 }
+div#fa_headerTitle {
+    background: transparent;
+    background-image: url(https://i.servimg.com/u/f58/20/17/62/59/craciu10.gif);
+    background-repeat: no-repeat!important;
+    /* background-size: contain!important; */
+    /* min-height: 200px; */
+}
 a#footer_brand div img {
     display: none;
 }
@@ -95,9 +102,9 @@ span.borderwrap-event {
   overflow: visible;
 }
 .xmas-hat-profile img {
- width: 100px;
- margin-left: -50px;
- margin-top: -12px;
+ width: 50px;
+ margin-left: -70px;
+ margin-top: -9px;
  z-index: 9;
  float: left;
  position: absolute;
@@ -118,11 +125,43 @@ span.borderwrap-event {
 }
 .xmas-hat-Conexion img {
  width: 100px;
- margin-left: -35px;
- margin-top: -15px;
+ margin-left: -40px;
+ margin-top: -10px;
  z-index: 9;
  float: left;
  position: absolute;
+}
+/***css staff icons***/
+b a[href="/g6-administratori-fgsuport"] {
+    background: url(https://i.servimg.com/u/f39/11/80/17/98/ad10.png) no-repeat;
+    padding-left: 15px;
+    padding-top: 2px;
+}
+b a[href="/g7-moderatori-fgsuport"] {
+    background: url(https://i.servimg.com/u/f39/11/80/17/98/mod11.png) no-repeat;
+    padding-left: 15px;
+    padding-top: 2px;
+}
+b a[href="/g8-asistenti-fgsuport"] {
+    background: url(https://i.servimg.com/u/f39/11/80/17/98/asiste12.png) no-repeat;
+    padding-left: 15px;
+    padding-top: 2px;
+}
+b a[href="/g9-designeri-fgsuport"] {
+    background: url(https://i.servimg.com/u/f39/11/80/17/98/gd10.png) no-repeat;
+    padding-left: 15px;
+    padding-top: 2px;
+}
+b a[href="/g10-analisti-fgsuport"] {
+    background: url(https://i.servimg.com/u/f39/11/80/17/98/analis11.png) no-repeat;
+    padding-left: 15px;
+    padding-top: 2px;
+}
+/***css icons staff***/
+a[href="/u1"] span {
+    background: url(https://i.servimg.com/u/f39/11/80/17/98/ad10.png) no-repeat;
+    padding-left: 15px;
+    padding-top: 2px;
 }
 /*^^^[Staark was here!!!]^^^Customizarea temei IPS pentru versiunea Invision^^^*/
 :root {
